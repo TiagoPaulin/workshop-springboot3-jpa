@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import java.util.Arrays;
-
+/*
 @Configuration
 @Profile("test")
 public class TestConfig implements CommandLineRunner {
@@ -26,3 +26,4 @@ public class TestConfig implements CommandLineRunner {
 
     }
 }
+*/
