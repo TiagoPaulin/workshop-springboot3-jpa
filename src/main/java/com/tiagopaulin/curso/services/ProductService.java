@@ -1,7 +1,9 @@
 package com.tiagopaulin.curso.services;
 
+import com.tiagopaulin.curso.entities.Order;
 import com.tiagopaulin.curso.entities.Product;
 import com.tiagopaulin.curso.repositories.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +16,14 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Transactional
     public List<Product> findAll() {
 
         return productRepository.findAll();
 
     }
 
+    @Transactional
     public Product findById(Long id) {
 
         Optional<Product> obj = productRepository.findById(id);
@@ -27,5 +31,6 @@ public class ProductService {
         return obj.get();
 
     }
+
 
 }
