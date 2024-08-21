@@ -16,14 +16,14 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    @Transactional
+
     public List<Product> findAll() {
 
         return productRepository.findAll();
 
     }
 
-    @Transactional
+
     public Product findById(Long id) {
 
         Optional<Product> obj = productRepository.findById(id);
