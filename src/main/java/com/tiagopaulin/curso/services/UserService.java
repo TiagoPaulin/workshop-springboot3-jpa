@@ -2,6 +2,7 @@ package com.tiagopaulin.curso.services;
 
 import com.tiagopaulin.curso.entities.User;
 import com.tiagopaulin.curso.repositories.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,25 @@ public class UserService {
     public void delete(Long id) {
 
         userRepository.deleteById(id);
+
+    }
+
+    @Transactional
+    public User update(Long id, User obj) {
+
+        User user = userRepository.getReferenceById(id);
+
+        updateData(user, obj);
+
+        return userRepository.save(user);
+
+    }
+
+    private void updateData(User user, User obj) {
+
+        user.setName(obj.getName());
+        user.setEmail(obj.getEmail());
+        user.setPhone(obj.getPhone());
 
     }
 
