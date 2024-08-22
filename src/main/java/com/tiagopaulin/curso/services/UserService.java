@@ -2,6 +2,7 @@ package com.tiagopaulin.curso.services;
 
 import com.tiagopaulin.curso.entities.User;
 import com.tiagopaulin.curso.repositories.UserRepository;
+import com.tiagopaulin.curso.services.exceptions.ResourceNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class UserService {
 
         Optional<User> obj = userRepository.findById(id);
 
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 
     }
 
